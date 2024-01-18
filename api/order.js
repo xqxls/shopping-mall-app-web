@@ -24,17 +24,6 @@ export function fetchOrderList(params) {
 	})
 }
 
-export function payOrderSuccess(data) {
-	return request({
-		method: 'POST',
-		url: '/order/paySuccess',
-		header: {
-			'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
-		},
-		data: data
-	})
-}
-
 export function fetchOrderDetail(orderId) {
 	return request({
 		method: 'GET',
@@ -72,5 +61,13 @@ export function deleteUserOrder(data) {
 			'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
 		},
 		data: data
+	})
+}
+
+export function fetchAliapyStatus(params) {
+	return request({
+		method: 'GET',
+		url: '/alipay/query',
+		params: params
 	})
 }

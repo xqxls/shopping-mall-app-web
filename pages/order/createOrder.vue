@@ -274,7 +274,7 @@
 					this.calcAmount.payAmount = this.calcAmount.payAmount - this.currCoupon.amount;
 				}
 				if (this.useIntegration != 0) {
-					this.calcAmount.payAmount = this.calcAmount.payAmount - this.calcIntegrationAmount();
+					this.calcAmount.payAmount = this.calcAmount.payAmount - this.calcIntegrationAmount(this.useIntegration);
 				}
 			},
 			//积分转金额
@@ -288,8 +288,10 @@
 				return integration / this.integrationConsumeSetting.deductionPerAmount;
 			},
 			handleIntegrationInput(event) {
+				this.calcPayAmount();
 				if (event.detail.value > this.memberIntegration) {
 					this.useIntegration = this.memberIntegration;
+					this.calcPayAmount();
 					uni.showToast({
 						title: `您的积分只有${this.memberIntegration}`,
 						duration: 1000
